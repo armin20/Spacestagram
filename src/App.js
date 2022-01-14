@@ -8,6 +8,7 @@ import "./App.css";
 import DataManager from "./Components/DataManager";
 import About from "./Components/About";
 import NotFound from "./Components/NotFound";
+const APIKEY = process.env.APIKEY;
 
 function App() {
   const [data, setData] = useState(null);
@@ -20,7 +21,7 @@ function App() {
       "https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos";
 
     if (date !== undefined) {
-      APIUrl += `?earth_date=${date}&api_key=42Dy7B5h6XomA7TYEz0DZ2ntOcCIWJm9vU9WMpyA`;
+      APIUrl += `?earth_date=${date}&api_key=${APIKEY}`;
     } else {
       APIUrl += "?sol=10&api_key=42Dy7B5h6XomA7TYEz0DZ2ntOcCIWJm9vU9WMpyA";
     }
