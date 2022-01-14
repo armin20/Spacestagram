@@ -23,7 +23,7 @@ function App() {
     if (date !== undefined) {
       APIUrl += `?earth_date=${date}&api_key=${APIKEY}`;
     } else {
-      APIUrl += "?sol=10&api_key=42Dy7B5h6XomA7TYEz0DZ2ntOcCIWJm9vU9WMpyA";
+      APIUrl += `?sol=10&api_key=${APIKEY}`;
     }
 
     fetch(APIUrl)
