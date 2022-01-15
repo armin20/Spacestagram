@@ -1,9 +1,14 @@
+/* 
+Armin Sharifiyan
+*/
+
 import { useEffect, useState } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import { Button } from "@mui/material";
 import { Form, FormControl, Container, Navbar, Nav } from "react-bootstrap";
 import { BiSearch } from "react-icons/bi";
 import { MdOutlineClear } from "react-icons/md";
+import { IoRocketOutline } from "react-icons/io5";
 import "bootstrap/dist/css/bootstrap.css";
 import "./App.css";
 import DataManager from "./Components/DataManager";
@@ -53,7 +58,10 @@ function App() {
     <div className="App">
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
         <Container>
-          <Navbar.Brand href="/">Spacestagram App</Navbar.Brand>
+          <Navbar.Brand href="/">
+            <IoRocketOutline />
+            Spacestagram App
+          </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
@@ -69,7 +77,6 @@ function App() {
                   value={date}
                   onChange={(e) => handleUnChange(e.target.value)}
                 />
-
                 <Button
                   variant="contained"
                   color="success"

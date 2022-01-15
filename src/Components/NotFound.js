@@ -1,3 +1,7 @@
+/* 
+Armin Sharifiyan
+*/
+
 export default function NotFound() {
   return (
     <>

@@ -1,3 +1,7 @@
+/* 
+Armin Sharifiyan
+*/
+
 import { useState } from "react";
 import { Grid, CircularProgress } from "@mui/material";
 import { Card } from "react-bootstrap";
@@ -7,13 +11,11 @@ export default function DataManager({ data, loading }) {
   const [likePhoto, setLikePhoto] = useState([]);
 
   const handleLiked = (src) => {
-    console.log(src);
     setLikePhoto([src, ...likePhoto]);
-    console.log(likePhoto);
   };
+
   const handleUnLiked = (src) => {
     setLikePhoto(likePhoto.filter((element) => element.id !== src));
-    console.log(likePhoto.filter((element) => element.id !== src));
   };
 
   if (loading) {
@@ -23,6 +25,7 @@ export default function DataManager({ data, loading }) {
       </>
     );
   }
+
   return (
     <div style={{ marginTop: 30, marginLeft: 100, marginRight: 15 }}>
       <Grid container spacing={2}>

@@ -1,3 +1,7 @@
+/* 
+Armin Sharifiyan
+*/
+
 import { Card, Button } from "react-bootstrap";
 
 export default function About() {
