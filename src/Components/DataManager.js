@@ -21,7 +21,10 @@ export default function DataManager({ data, loading }) {
   if (loading) {
     return (
       <>
-        <CircularProgress /> Loading...
+        <h1 style={{ color: "white" }}>
+          <CircularProgress color="inherit" />
+          Loading...
+        </h1>
       </>
     );
   }

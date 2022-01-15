@@ -1,11 +1,16 @@
 /* 
 Armin Sharifiyan
 */
+import { Card } from "react-bootstrap";
 
 export default function NotFound() {
   return (
     <>
-      <h1>404 Not Found </h1>
+      <Card style={{ backgroundColor: "#F5F5F5", margin: 20 }}>
+        <Card.Body>
+          <Card.Title>404 Not Found</Card.Title>
+        </Card.Body>
+      </Card>
     </>
   );
 }

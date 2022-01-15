@@ -1,13 +1,12 @@
 /* 
 Armin Sharifiyan
 */
-
 import { Card, Button } from "react-bootstrap";
 
 export default function About() {
   return (
     <>
-      <Card style={{ backgroundColor: "#F5F5F5" }}>
+      <Card style={{ backgroundColor: "#F5F5F5", margin: 20 }}>
         <Card.Body>
           <Card.Title>About</Card.Title>
           <Card.Text className="font-weight-bold">Hi, I am Armin. :)</Card.Text>
