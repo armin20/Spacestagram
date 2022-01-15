@@ -3,6 +3,7 @@ import { Switch, Route, Redirect } from "react-router-dom";
 import { Button } from "@mui/material";
 import { Form, FormControl, Container, Navbar, Nav } from "react-bootstrap";
 import { BiSearch } from "react-icons/bi";
+import { MdOutlineClear } from "react-icons/md";
 import "bootstrap/dist/css/bootstrap.css";
 import "./App.css";
 import DataManager from "./Components/DataManager";
@@ -22,7 +23,7 @@ function App() {
     if (date !== undefined) {
       APIUrl += `?earth_date=${date}&api_key=42Dy7B5h6XomA7TYEz0DZ2ntOcCIWJm9vU9WMpyA`;
     } else {
-      APIUrl += `?sol=10&api_key=42Dy7B5h6XomA7TYEz0DZ2ntOcCIWJm9vU9WMpyA`;
+      APIUrl += `?sol=1000&api_key=42Dy7B5h6XomA7TYEz0DZ2ntOcCIWJm9vU9WMpyA`;
     }
 
     fetch(APIUrl)
@@ -37,12 +38,15 @@ function App() {
   }, [date]);
 
   const handleUnChange = (src) => {
-    console.log(src);
     setDate(src);
   };
 
   const handleSearch = () => {
-    setSearch(true);
+    if (!search) {
+      setSearch(true);
+    } else {
+      setSearch(false);
+    }
   };
 
   return (
@@ -62,24 +66,20 @@ function App() {
                 <FormControl
                   type="date"
                   placeholder="Borough"
-                  className="mr-sm-2"
                   value={date}
                   onChange={(e) => handleUnChange(e.target.value)}
                 />
+
                 <Button
-                  type="submit"
                   variant="contained"
                   color="success"
                   onClick={handleSearch}
-                  hidden={true}
                 >
-                  <BiSearch />
-                  Search by Date
+                  <MdOutlineClear />
                 </Button>
               </Form>
             ) : (
               <Button
-                type="submit"
                 variant="contained"
                 color="success"
                 onClick={handleSearch}

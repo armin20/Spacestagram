@@ -1,27 +1,19 @@
 import { useState } from "react";
-import {
-  Grid,
-  Card,
-  CardMedia,
-  CardContent,
-  Typography,
-  CardActions,
-  Button,
-  CircularProgress,
-} from "@mui/material";
-import { BsHeartFill, BsHeart } from "react-icons/bs";
+import { Grid, CircularProgress } from "@mui/material";
+import { Card } from "react-bootstrap";
+import CardComponent from "./CardComponent";
 
 export default function DataManager({ data, loading }) {
-  const [like, setLiked] = useState(false);
-  const [index, setIndex] = useState(0);
+  const [likePhoto, setLikePhoto] = useState([]);
 
   const handleLiked = (src) => {
-    setLiked(true);
-    setIndex(src);
+    console.log(src);
+    setLikePhoto([src, ...likePhoto]);
+    console.log(likePhoto);
   };
   const handleUnLiked = (src) => {
-    setLiked(false);
-    setIndex(src);
+    setLikePhoto(likePhoto.filter((element) => element.id !== src));
+    console.log(likePhoto.filter((element) => element.id !== src));
   };
 
   if (loading) {
@@ -35,39 +27,24 @@ export default function DataManager({ data, loading }) {
     <div style={{ marginTop: 30, marginLeft: 100, marginRight: 15 }}>
       <Grid container spacing={2}>
         {data ? (
-          data.map((elem, idx) => (
+          data.map((element, idx) => (
             <Grid key={idx} item xs={4}>
-              <Card sx={{ maxWidth: 345 }}>
-                <CardMedia
-                  component="img"
-                  height="140"
-                  image={elem.img_src}
-                  alt="green iguana"
-                />
-                <CardContent>
-                  <Typography gutterBottom variant="h5" component="div">
-                    {elem.camera.full_name}
-                  </Typography>
-                  <Typography gutterBottom variant="p" component="div">
-                    {elem.earth_date}
-                  </Typography>
-                </CardContent>
-                <CardActions>
-                  {like && index === idx ? (
-                    <Button size="meduim" onClick={() => handleUnLiked(idx)}>
-                      <BsHeartFill />
-                    </Button>
-                  ) : (
-                    <Button size="small" onClick={() => handleLiked(idx)}>
-                      <BsHeart /> Like
-                    </Button>
-                  )}
-                </CardActions>
-              </Card>
+              <CardComponent
+                data={element}
+                key={idx}
+                handleLiked={handleLiked}
+                handleUnLiked={handleUnLiked}
+              />
             </Grid>
           ))
         ) : (
-          <h1>Error getting data... </h1>
+          <Grid item xs={11}>
+            <Card style={{ backgroundColor: "#F5F5F5" }}>
+              <Card.Body>
+                <Card.Title>No Data </Card.Title>
+              </Card.Body>
+            </Card>
+          </Grid>
         )}
       </Grid>
     </div>
